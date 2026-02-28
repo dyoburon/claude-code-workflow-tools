@@ -49,6 +49,14 @@
             "command": "$HOME/.claude/hooks/sendqueue-hook.sh"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/commit-hook.sh"
+          }
+        ]
       }
     ]
   }

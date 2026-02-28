@@ -50,7 +50,8 @@ cat << 'EOF'
       { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/pending-hook.sh" }] },
       { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/send-hook.sh" }] },
       { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/queue-hook.sh" }] },
-      { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/sendqueue-hook.sh" }] }
+      { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/sendqueue-hook.sh" }] },
+      { "hooks": [{ "type": "command", "command": "$HOME/.claude/hooks/commit-hook.sh" }] }
     ]
   }
 }
