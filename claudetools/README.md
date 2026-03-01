@@ -156,6 +156,38 @@ Enhanced status showing model, context, cost, and duration.
 rm ~/.claude/cost-tally.json
 ```
 
+### Windows (PowerShell)
+
+A PowerShell port (`statusline.ps1`) is included for Windows users. It provides the same functionality without requiring `jq` or `bc` -- only PowerShell 7+ (`pwsh`).
+
+**Install:**
+
+```powershell
+mkdir "$env:USERPROFILE\.claude\statusline" -Force
+Copy-Item statusline/statusline.ps1 "$env:USERPROFILE\.claude\statusline\statusline.ps1"
+```
+
+**Configure** in `%USERPROFILE%\.claude\settings.json`:
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File C:/Users/YOUR_USERNAME/.claude/statusline/statusline.ps1"
+  }
+}
+```
+
+**Differences from the Bash version:**
+- Uses plain text context indicators (`~` at 60%, `!` at 80%) instead of emoji circles, for broader Windows terminal compatibility
+- No dependency on `jq` or `bc` -- uses native PowerShell (`ConvertFrom-Json`, built-in arithmetic)
+- Cost tracking file and format are identical (`~/.claude/cost-tally.json`)
+
+**Reset cost tracking on Windows:**
+```powershell
+Remove-Item "$env:USERPROFILE\.claude\cost-tally.json"
+```
+
 ---
 
 ## Directory Structure
@@ -174,7 +206,8 @@ claudetools/
 ├── commands/
 │   └── cc-fast.sh          # Checkpoint helper script
 ├── statusline/
-│   └── statusline.sh       # Status line script
+│   ├── statusline.sh       # Status line script (macOS/Linux)
+│   └── statusline.ps1      # Status line script (Windows)
 └── docs/
     ├── howthehookworks/
     │   └── implementation.md
