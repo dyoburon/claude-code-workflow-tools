@@ -1,0 +1,9 @@
+# Inline equivalent to hooks.json. Prefer hooks.json for this package.
+
+[[hooks.UserPromptSubmit]]
+
+[[hooks.UserPromptSubmit.hooks]]
+type = "command"
+command = "$CODEX_HOME/workflow-tools/hooks/codex-workflow-dispatcher.sh"
+timeout = 30
+statusMessage = "Checking workflow command"

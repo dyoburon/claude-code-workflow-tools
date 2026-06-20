@@ -14,6 +14,11 @@ cd workflow-tools
 ./claudetools/install.sh
 ```
 
+**Codex Tools** (Claude-style workflow hooks for Codex):
+```bash
+./codex/install.sh
+```
+
 **Hammerspoon Tools** (macOS only - window management):
 ```bash
 ./hammerspoon-install.sh
@@ -41,13 +46,29 @@ Plus a statusline showing context usage, cost, and duration.
 
 [Full documentation →](claudetools/README.md)
 
-### 2. Force Alt-Tab (`force-alt-tab/`)
+### 2. Codex Tools (`codex/`)
+
+Ports of the Claude Code workflow hooks for Codex, installed under `CODEX_HOME` such as `~/.codex-personal`.
+
+| Command | Description |
+|---------|-------------|
+| `$pending <name> <prompt>` | Save prompt for later |
+| `$send <name>` | Execute saved prompt |
+| `$queue <name> <prompt>` | Add to prompt queue |
+| `$queue-list` | Show queue contents |
+| `$sendqueue` | Execute next queued prompt |
+| `$commit [description]` | Inject conventional commit instructions |
+| `$mass-commit [hints]` | Inject atomic multi-commit instructions |
+
+[Full documentation →](codex/README.md)
+
+### 3. Force Alt-Tab (`force-alt-tab/`)
 
 **macOS only** - Hammerspoon script that fixes Cmd+Tab behavior. Apps always unhide when you switch to them.
 
 [Full documentation →](force-alt-tab/README.md)
 
-### 3. Window Recorder (`window-recorder/`)
+### 4. Window Recorder (`window-recorder/`)
 
 **macOS only** - Record and replay window positions with hotkeys.
 
@@ -57,7 +78,7 @@ Plus a statusline showing context usage, cost, and duration.
 | `Cmd+Option+2-9` | Restore saved position |
 [Full documentation →](window-recorder/README.md)
 
-### 4. Image to Clipboard (`image-to-clipboard-for-claude/`)
+### 5. Image to Clipboard (`image-to-clipboard-for-claude/`)
 
 **macOS only** - Hammerspoon script that takes an interactive screenshot and copies the file path to your clipboard for pasting into Claude.
 
@@ -67,7 +88,7 @@ Plus a statusline showing context usage, cost, and duration.
 
 [Full documentation →](image-to-clipboard-for-claude/README.md)
 
-### 5. Eyedropper Color Picker (`eyedropper-color-picker/`)
+### 6. Eyedropper Color Picker (`eyedropper-color-picker/`)
 
 **macOS only** - Pick any pixel color on screen and copy the hex value to your clipboard. Works system-wide.
 
@@ -78,7 +99,7 @@ Plus a statusline showing context usage, cost, and duration.
 
 [Full documentation →](eyedropper-color-picker/README.md)
 
-### 6. DOM Extractor (`dom-for-llm-extractor/`)
+### 7. DOM Extractor (`dom-for-llm-extractor/`)
 
 JavaScript tool to extract page structure for LLM analysis.
 
@@ -87,6 +108,7 @@ JavaScript tool to extract page structure for LLM analysis.
 | Tool | Dependencies |
 |------|--------------|
 | Claude Code Tools | `jq`, `bc` |
+| Codex Tools | Codex CLI, `jq` |
 | Hammerspoon Tools | [Hammerspoon](https://www.hammerspoon.org/) (macOS) |
 | Bookmarklets | Modern browser |
 
@@ -95,6 +117,7 @@ JavaScript tool to extract page structure for LLM analysis.
 | Tool | macOS | Linux | Windows (WSL) |
 |------|-------|-------|---------------|
 | Claude Code Tools | ✓ | ✓ | ✓ |
+| Codex Tools | ✓ | ✓ | ✓ |
 | Hammerspoon Tools | ✓ | - | - |
 | Bookmarklets | ✓ | ✓ | ✓ |
 
