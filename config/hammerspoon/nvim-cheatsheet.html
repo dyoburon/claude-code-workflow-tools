@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #1a1b26;
+    --panel: #24283b;
+    --fg: #c0caf5;
+    --muted: #7aa2f7;
+    --accent: #bb9af7;
+    --key-bg: #414868;
+    --key-fg: #e0af68;
+    --border: #3b4261;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--fg);
+    font-family: -apple-system, "SF Pro Text", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    height: 100%;
+    overflow: hidden;
+  }
+  .wrap {
+    padding: 20px 24px;
+    height: 100%;
+    overflow-y: auto;
+  }
+  h1 {
+    font-size: 16px;
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+  .sub { color: var(--muted); font-size: 11px; margin-bottom: 16px; }
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .col { background: var(--panel); border-radius: 8px; padding: 12px 14px; border: 1px solid var(--border); }
+  h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin: 0 0 8px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 3px 0; vertical-align: top; }
+  td.k {
+    white-space: nowrap;
+    padding-right: 10px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+  }
+  kbd {
+    background: var(--key-bg);
+    color: var(--key-fg);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10.5px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    border: 1px solid var(--border);
+  }
+  td.d { color: var(--fg); }
+  .footer {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+  }
+  .footer kbd { font-size: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>NVIM &amp; TMUX CHEATSHEET</h1>
+  <div class="sub">LazyVim defaults · leader = <kbd>Space</kbd> · tmux prefix = <kbd>Ctrl-b</kbd></div>
+
+  <div class="cols">
+
+    <div class="col">
+      <h2>Files &amp; Search</h2>
+      <table>
+        <tr><td class="k"><kbd>␣ff</kbd></td><td class="d">find file by name</td></tr>
+        <tr><td class="k"><kbd>␣fr</kbd></td><td class="d">recent files</td></tr>
+        <tr><td class="k"><kbd>␣fb</kbd></td><td class="d">open buffers</td></tr>
+        <tr><td class="k"><kbd>␣sb</kbd></td><td class="d">search current file lines</td></tr>
+        <tr><td class="k"><kbd>␣sg</kbd></td><td class="d">grep contents (live)</td></tr>
+        <tr><td class="k"><kbd>␣/</kbd></td><td class="d">grep contents (alt)</td></tr>
+        <tr><td class="k"><kbd>␣sw</kbd></td><td class="d">grep word under cursor</td></tr>
+        <tr><td class="k"><kbd>␣e</kbd></td><td class="d">file tree (neo-tree)</td></tr>
+        <tr><td class="k"><kbd>␣sh</kbd></td><td class="d">search help</td></tr>
+        <tr><td class="k"><kbd>␣sk</kbd></td><td class="d">search keymaps</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Move &amp; Jump</h2>
+      <table>
+        <tr><td class="k"><kbd>gg</kbd></td><td class="d">top of file</td></tr>
+        <tr><td class="k"><kbd>G</kbd></td><td class="d">bottom of file</td></tr>
+        <tr><td class="k"><kbd>0</kbd> / <kbd>^</kbd></td><td class="d">start of line</td></tr>
+        <tr><td class="k"><kbd>$</kbd></td><td class="d">end of line</td></tr>
+        <tr><td class="k"><kbd>w</kbd> / <kbd>b</kbd></td><td class="d">next/prev word</td></tr>
+        <tr><td class="k"><kbd>%</kbd></td><td class="d">match bracket</td></tr>
+        <tr><td class="k"><kbd>Ctrl-o</kbd></td><td class="d">back (jump list)</td></tr>
+        <tr><td class="k"><kbd>Ctrl-i</kbd></td><td class="d">forward (jump list)</td></tr>
+        <tr><td class="k"><kbd>{</kbd> / <kbd>}</kbd></td><td class="d">prev/next paragraph</td></tr>
+        <tr><td class="k"><kbd>:42</kbd></td><td class="d">jump to line 42</td></tr>
+      </table>
+    </div>
+
+    <div class="col">
+      <h2>LSP / Code</h2>
+      <table>
+        <tr><td class="k"><kbd>gd</kbd></td><td class="d">go to definition</td></tr>
+        <tr><td class="k"><kbd>gr</kbd></td><td class="d">references</td></tr>
+        <tr><td class="k"><kbd>gI</kbd></td><td class="d">implementations</td></tr>
+        <tr><td class="k"><kbd>gy</kbd></td><td class="d">type definition</td></tr>
+        <tr><td class="k"><kbd>K</kbd></td><td class="d">hover docs</td></tr>
+        <tr><td class="k"><kbd>␣cr</kbd></td><td class="d">rename symbol</td></tr>
+        <tr><td class="k"><kbd>␣ca</kbd></td><td class="d">code action</td></tr>
+        <tr><td class="k"><kbd>␣cf</kbd></td><td class="d">format file</td></tr>
+        <tr><td class="k"><kbd>]d</kbd> / <kbd>[d</kbd></td><td class="d">next/prev diagnostic</td></tr>
+        <tr><td class="k"><kbd>␣cd</kbd></td><td class="d">line diagnostic</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Edit</h2>
+      <table>
+        <tr><td class="k"><kbd>i</kbd> / <kbd>a</kbd></td><td class="d">insert / append</td></tr>
+        <tr><td class="k"><kbd>o</kbd> / <kbd>O</kbd></td><td class="d">new line below/above</td></tr>
+        <tr><td class="k"><kbd>x</kbd></td><td class="d">delete char</td></tr>
+        <tr><td class="k"><kbd>dd</kbd></td><td class="d">delete line</td></tr>
+        <tr><td class="k"><kbd>yy</kbd></td><td class="d">yank (copy) line</td></tr>
+        <tr><td class="k"><kbd>p</kbd> / <kbd>P</kbd></td><td class="d">paste after/before</td></tr>
+        <tr><td class="k"><kbd>u</kbd></td><td class="d">undo</td></tr>
+        <tr><td class="k"><kbd>Ctrl-r</kbd></td><td class="d">redo</td></tr>
+        <tr><td class="k"><kbd>.</kbd></td><td class="d">repeat last edit</td></tr>
+        <tr><td class="k"><kbd>=ap</kbd></td><td class="d">re-indent paragraph</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Text Objects (d/c/y + i/a + obj)</h2>
+      <table>
+        <tr><td class="k"><kbd>diw</kbd></td><td class="d">delete inner word</td></tr>
+        <tr><td class="k"><kbd>daw</kbd></td><td class="d">delete a word + space</td></tr>
+        <tr><td class="k"><kbd>diW</kbd></td><td class="d">delete inner WORD (incl. punct)</td></tr>
+        <tr><td class="k"><kbd>daW</kbd></td><td class="d">delete a WORD + space</td></tr>
+        <tr><td class="k"><kbd>dis</kbd> / <kbd>das</kbd></td><td class="d">delete inner / a sentence</td></tr>
+        <tr><td class="k"><kbd>dip</kbd> / <kbd>dap</kbd></td><td class="d">delete inner / a paragraph</td></tr>
+        <tr><td class="k"><kbd>di"</kbd> / <kbd>da"</kbd></td><td class="d">inside / around quotes</td></tr>
+        <tr><td class="k"><kbd>di(</kbd> / <kbd>da(</kbd></td><td class="d">inside / around parens</td></tr>
+        <tr><td class="k"><kbd>di{</kbd> / <kbd>da{</kbd></td><td class="d">inside / around braces</td></tr>
+        <tr><td class="k"><kbd>dit</kbd> / <kbd>dat</kbd></td><td class="d">inside / around HTML tag</td></tr>
+        <tr><td class="k"><kbd>ciw</kbd> / <kbd>yiw</kbd></td><td class="d">change / yank inner word</td></tr>
+        <tr><td class="k" style="color:var(--muted)">tip</td><td class="d">swap <kbd>d</kbd> for <kbd>c</kbd> (change) or <kbd>y</kbd> (yank)</td></tr>
+      </table>
+    </div>
+
+    <div class="col">
+      <h2>Windows / Tabs</h2>
+      <table>
+        <tr><td class="k"><kbd>␣|</kbd></td><td class="d">vsplit</td></tr>
+        <tr><td class="k"><kbd>␣-</kbd></td><td class="d">hsplit</td></tr>
+        <tr><td class="k"><kbd>Ctrl-h/j/k/l</kbd></td><td class="d">move between splits</td></tr>
+        <tr><td class="k"><kbd>␣wd</kbd></td><td class="d">close split</td></tr>
+        <tr><td class="k"><kbd>␣bd</kbd></td><td class="d">close buffer</td></tr>
+        <tr><td class="k"><kbd>Shift-h/l</kbd></td><td class="d">prev/next buffer</td></tr>
+        <tr><td class="k"><kbd>␣&lt;tab&gt;n</kbd></td><td class="d">new tab</td></tr>
+        <tr><td class="k"><kbd>␣&lt;tab&gt;d</kbd></td><td class="d">close tab</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Search in File</h2>
+      <table>
+        <tr><td class="k"><kbd>/foo</kbd></td><td class="d">search forward</td></tr>
+        <tr><td class="k"><kbd>?foo</kbd></td><td class="d">search backward</td></tr>
+        <tr><td class="k"><kbd>n</kbd> / <kbd>N</kbd></td><td class="d">next / prev match</td></tr>
+        <tr><td class="k"><kbd>*</kbd> / <kbd>#</kbd></td><td class="d">search word under cursor</td></tr>
+        <tr><td class="k"><kbd>:%s/a/b/g</kbd></td><td class="d">replace all in file</td></tr>
+        <tr><td class="k"><kbd>:noh</kbd></td><td class="d">clear highlight</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Survival</h2>
+      <table>
+        <tr><td class="k"><kbd>Esc</kbd></td><td class="d">normal mode (panic button)</td></tr>
+        <tr><td class="k"><kbd>:w</kbd></td><td class="d">save</td></tr>
+        <tr><td class="k"><kbd>:q</kbd></td><td class="d">quit</td></tr>
+        <tr><td class="k"><kbd>:wq</kbd></td><td class="d">save &amp; quit</td></tr>
+        <tr><td class="k"><kbd>:q!</kbd></td><td class="d">quit, discard changes</td></tr>
+        <tr><td class="k"><kbd>v</kbd></td><td class="d">visual select (chars)</td></tr>
+        <tr><td class="k"><kbd>V</kbd></td><td class="d">visual select (lines)</td></tr>
+        <tr><td class="k"><kbd>Ctrl-v</kbd></td><td class="d">visual block</td></tr>
+        <tr><td class="k"><kbd>␣?</kbd></td><td class="d">which-key help</td></tr>
+      </table>
+    </div>
+
+    <div class="col">
+      <h2>Tmux · Panes</h2>
+      <table>
+        <tr><td class="k"><kbd>⌃b "</kbd></td><td class="d">split horizontal (top/bot)</td></tr>
+        <tr><td class="k"><kbd>⌃b %</kbd></td><td class="d">split vertical (left/right)</td></tr>
+        <tr><td class="k"><kbd>⌃b ←↑↓→</kbd></td><td class="d">move between panes</td></tr>
+        <tr><td class="k"><kbd>⌃b z</kbd></td><td class="d">zoom / unzoom pane</td></tr>
+        <tr><td class="k"><kbd>⌃b x</kbd></td><td class="d">close current pane</td></tr>
+        <tr><td class="k"><kbd>⌃d</kbd></td><td class="d">close pane (exit shell)</td></tr>
+        <tr><td class="k"><kbd>⌃b {</kbd> / <kbd>}</kbd></td><td class="d">swap pane prev/next</td></tr>
+        <tr><td class="k"><kbd>⌃b !</kbd></td><td class="d">break pane into window</td></tr>
+        <tr><td class="k"><kbd>⌃b ␣</kbd></td><td class="d">cycle pane layouts</td></tr>
+        <tr><td class="k"><kbd>⌃b ⌃←↑↓→</kbd></td><td class="d">resize pane</td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Tmux · Scroll &amp; History</h2>
+      <table>
+        <tr><td class="k"><kbd>⌃b [</kbd></td><td class="d">enter copy/scroll mode</td></tr>
+        <tr><td class="k">in mode: <kbd>↑↓</kbd></td><td class="d">scroll line</td></tr>
+        <tr><td class="k"><kbd>PgUp</kbd>/<kbd>PgDn</kbd></td><td class="d">scroll page</td></tr>
+        <tr><td class="k"><kbd>g</kbd> / <kbd>G</kbd></td><td class="d">jump top / bottom</td></tr>
+        <tr><td class="k"><kbd>/foo</kbd></td><td class="d">search forward</td></tr>
+        <tr><td class="k"><kbd>?foo</kbd></td><td class="d">search backward</td></tr>
+        <tr><td class="k"><kbd>n</kbd> / <kbd>N</kbd></td><td class="d">next / prev match</td></tr>
+        <tr><td class="k"><kbd>␣</kbd> then <kbd>↵</kbd></td><td class="d">select then copy</td></tr>
+        <tr><td class="k"><kbd>q</kbd></td><td class="d">exit copy mode</td></tr>
+        <tr><td class="k"><kbd>⌃b ]</kbd></td><td class="d">paste copied text</td></tr>
+        <tr><td class="k">cmd line</td><td class="d"><kbd>⌃b :</kbd><span style="color:var(--muted)"> capture-pane -pS -</span></td></tr>
+      </table>
+
+      <h2 style="margin-top:14px">Tmux · Windows &amp; Sessions</h2>
+      <table>
+        <tr><td class="k"><kbd>⌃b c</kbd></td><td class="d">new window (tab)</td></tr>
+        <tr><td class="k"><kbd>⌃b n</kbd> / <kbd>p</kbd></td><td class="d">next / prev window</td></tr>
+        <tr><td class="k"><kbd>⌃b 0..9</kbd></td><td class="d">go to window N</td></tr>
+        <tr><td class="k"><kbd>⌃b w</kbd></td><td class="d">window picker</td></tr>
+        <tr><td class="k"><kbd>⌃b ,</kbd></td><td class="d">rename window</td></tr>
+        <tr><td class="k"><kbd>⌃b &amp;</kbd></td><td class="d">kill window (y/n)</td></tr>
+        <tr><td class="k"><kbd>⌃b d</kbd></td><td class="d">detach (keep running)</td></tr>
+        <tr><td class="k">shell</td><td class="d"><kbd>tmux a</kbd> = re-attach</td></tr>
+        <tr><td class="k">shell</td><td class="d"><kbd>tmux ls</kbd> = list sessions</td></tr>
+        <tr><td class="k"><kbd>⌃b $</kbd></td><td class="d">rename session</td></tr>
+        <tr><td class="k"><kbd>⌃b s</kbd></td><td class="d">session picker</td></tr>
+        <tr><td class="k"><kbd>⌃b ?</kbd></td><td class="d">show all keybinds</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Toggle: <kbd>⌘⌃⇧,</kbd> &nbsp;·&nbsp; close: <kbd>Esc</kbd> &nbsp;·&nbsp; ␣ = <kbd>Space</kbd> (nvim) / <kbd>Space</kbd> (tmux copy-mode)
+  </div>
+</div>
+</body>
+</html>
