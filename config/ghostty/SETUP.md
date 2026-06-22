@@ -4,12 +4,12 @@ This directory is an installable Ghostty config. It includes:
 
 - `config.ghostty`, the current Ghostty config filename
 - `config`, the legacy Ghostty config filename
-- `themes/prism-theme`, the custom prism color theme
+- `themes/prism-theme`, the same custom prism colors as a reusable theme file
 
-Both config files set the font and apply the theme. They use `theme =
-prism-theme` and also load `themes/prism-theme` directly with `config-file` so
-the colors still apply when the config is installed in a macOS-specific config
-directory.
+Both config files inline the font and color settings. The color values are
+duplicated intentionally: Ghostty does not resolve `theme = prism-theme` from an
+arbitrary repo checkout, so inlining avoids a setup where the theme silently
+fails to load.
 
 ## Install
 
@@ -50,3 +50,9 @@ cp /Users/dylan/Desktop/projects/workflow-tools/config/ghostty/themes/prism-them
 ```
 
 Reload Ghostty with `cmd+shift+,` or restart Ghostty.
+
+## Known Difference From iTerm2
+
+iTerm2 stores the selection background with alpha `0.3`. Ghostty 1.3.1 rejects
+8-digit hex alpha values for `selection-background`, so this config uses the
+closest opaque color, `#3186d3`.

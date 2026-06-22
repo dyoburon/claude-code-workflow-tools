@@ -1,7 +1,30 @@
-# Font settings
+# Imported from iTerm2 "Default" profile (Dark variant) - 2026-05-26
+
 font-family = Monaco
 font-size = 16
 
-# Theme file: themes/prism-theme
-theme = prism-theme
-config-file = themes/prism-theme
+background = #000000
+foreground = #c2c4c6
+
+cursor-color = #3186d3
+cursor-text = #000000
+
+selection-background = #3186d3
+selection-foreground = #e0e0e3
+
+palette = 0=#000000
+palette = 1=#ca6386
+palette = 2=#d09f22
+palette = 3=#d09f22
+palette = 4=#3186d3
+palette = 5=#ca6386
+palette = 6=#3186d3
+palette = 7=#e0e0e3
+palette = 8=#52525b
+palette = 9=#d77296
+palette = 10=#ddaf33
+palette = 11=#ddaf33
+palette = 12=#4196e0
+palette = 13=#d77296
+palette = 14=#4196e0
+palette = 15=#e0e0e3
