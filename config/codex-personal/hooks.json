@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/dylan/.codex-personal/workflow-tools/hooks/codex-workflow-dispatcher.sh",
+            "timeout": 30,
+            "statusMessage": "Checking workflow command"
+          }
+        ]
+      }
+    ]
+  }
+}

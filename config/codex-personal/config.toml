@@ -1,0 +1,25 @@
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+[projects."/Users/dylan/Desktop/projects"]
+trust_level = "trusted"
+
+[projects."/Users/dylan/Desktop/projects/datafeeds"]
+trust_level = "trusted"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[tui.keymap.editor]
+kill_whole_line = "ctrl-x"
+
+[sandbox_workspace_write]
+network_access = true
+writable_roots = ["/Users/dylan/.codex-personal/workflow-tools"]
+
+[hooks.state]
+
+[hooks.state."/Users/dylan/.codex-personal/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:56cf475c42d9e1b3f2c580bd895d1a8d223dcff3e6919c8b28973be883dfabbb"
