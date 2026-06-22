@@ -1,0 +1,7 @@
+# Font settings
+font-family = Monaco
+font-size = 16
+
+# Theme file: themes/prism-theme
+theme = prism-theme
+config-file = themes/prism-theme
